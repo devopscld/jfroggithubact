@@ -22,14 +22,14 @@ jobs:
        JF_USER: ${{ secrets.JF_USER }}
        JF_PASSWORD: ${{ secrets.JF_PASSWORD }}
 
-   - run: mkdir -p sample/artifact
+#    - run: mkdir -p sample/artifact
 
-   - run: echo hello > sample/artifact/world.txt
+#    - run: echo hello > sample/artifact/world.txt
 
-   - uses: actions/upload-artifact@v3
-     with:
-       name: my-artifact
-       path: sample/artifact/world.txt
+#    - uses: actions/upload-artifact@v3
+#      with:
+#        name: my-artifact
+#        path: sample/artifact/world.txt
    # This command adds a new server configuration to the JFrog CLI   
 #    - run: |
 #        export SERVER_ID="test"
@@ -41,17 +41,17 @@ jobs:
 
 
 #    # This action creates a new test file and uploads it to Artifactory   
-#    - name: Push Build to Artifactory
-#      run: |
-#        echo "test file " > test.txt
-#        export BUILD_NAME="my-build"
-#        export BUILD_MODULE="my-module"
-#        export BUILD_NUMBER="1"
+   - name: Push Build to Artifactory
+     run: |
+       echo "test file " > test.txt
+       export BUILD_NAME="my-build"
+       export BUILD_MODULE="my-module"
+       export BUILD_NUMBER="1"
 
 
-#        export PATH_TO_DIRECTORY="name/version/dates"
+       export PATH_TO_DIRECTORY="name/version/dates"
       
-#        jf rt upload "test.txt" example-repo-local/$PATH_TO_DIRECTORY --build-name $BUILD_NAME --build-number $BUILD_NUMBER --module $BUILD_MODULE
+       jf rt upload "test.txt" example-repo-local --build-name $BUILD_NAME --build-number $BUILD_NUMBER --module $BUILD_MODULE
 
 
 #    # This action publishes the build information to Artifactory and deletes older builds
