@@ -19,6 +19,8 @@ jobs:
      env:
        JF_URL: ${{ secrets.ARTIFACTORY_URL }}
        JF_ACCESS_TOKEN: ${{ secrets.ARTIFACTORY_ACCESS_TOKEN }}
+       JF_USER: ${{ secrets.JF_USER }}
+       JF_PASSWORD: ${{ secrets.JF_PASSWORD }}
 
 
    # This command adds a new server configuration to the JFrog CLI   
