@@ -54,7 +54,7 @@ jobs:
        export BUILD_NUMBER="1"
 
 
-       export PATH_TO_DIRECTORY="name/version/dates"
+       export PATH_TO_DIRECTORY="example-repo-generic-local"
       
        jf rt upload "test.txt" $PATH_TO_DIRECTORY --url https://jfrogtest19.jfrog.io/artifactory 
 
