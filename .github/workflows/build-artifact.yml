@@ -35,7 +35,7 @@ jobs:
        export SERVER_ID="test"
        jf c add $SERVER_ID --url=$URL --access-token=$ACCESS_TOKEN --interactive=false
        
-#    - name: Setup JFrog CLI
+
 #      uses: jfrog/setup-jfrog-cli@v3.3.0
 
 
