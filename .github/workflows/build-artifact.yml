@@ -51,7 +51,7 @@ jobs:
 
        export PATH_TO_DIRECTORY="name/version/dates"
       
-       jf rt upload "test.txt" $PATH_TO_DIRECTORY --url https://jfrogtest19.jfrog.io/artifactory
+       jf rt upload "test.txt" $PATH_TO_DIRECTORY --url https://jfrogtest19.jfrog.io
 
 
 #    # This action publishes the build information to Artifactory and deletes older builds
