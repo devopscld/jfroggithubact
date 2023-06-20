@@ -22,7 +22,7 @@ jobs:
        JF_USER: ${{ secrets.JF_USER }}
        JF_PASSWORD: ${{ secrets.JF_PASSWORD }}
 
-#    - run: mkdir -p sample/artifact
+#    - run: mkdir -p sample/artifac
 #
 #    - run: echo hello > sample/artifact/world.txt
 
