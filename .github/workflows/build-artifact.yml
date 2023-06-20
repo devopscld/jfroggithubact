@@ -30,7 +30,7 @@ jobs:
 #      with:
 #        name: my-artifact
 #        path: sample/artifact/world.txt
-   # This command adds a new server configuration to the JFrog CLI   
+   # This command adds a new server configuration to JFrog CLI   
 #    - run: |
 #        export SERVER_ID="test"
 #        jf c add $SERVER_ID --url=$URL --access-token=$ACCESS_TOKEN --interactive=false
