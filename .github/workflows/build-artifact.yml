@@ -16,11 +16,11 @@ jobs:
 
    # This action sets up the JFrog CLI with the Artifactory URL and access token     
    - uses: jfrog/setup-jfrog-cli@v3
-#      with:
-#        JF_PASSWORD: ${{ secrets.JF_PASSWORD }}
-#        JF_ACCESS_TOKEN: ${{ secrets.ARTIFACTORY_ACCESS_TOKEN }}
-#        JF_USER: ${{ secrets.JF_USER }}
-#        JF_URL: ${{ secrets.ARTIFACTORY_URL }}
+     with:
+       JF_PASSWORD: ${{ secrets.JF_PASSWORD }}
+       JF_ACCESS_TOKEN: ${{ secrets.ARTIFACTORY_ACCESS_TOKEN }}
+       JF_USER: ${{ secrets.JF_USER }}
+       JF_URL: ${{ secrets.ARTIFACTORY_URL }}
      env:
        JF_URL: ${{ secrets.ARTIFACTORY_URL }}
        JF_ACCESS_TOKEN: ${{ secrets.ARTIFACTORY_ACCESS_TOKEN }}
