@@ -31,9 +31,9 @@ jobs:
 #        name: my-artifact
 #        path: sample/artifact/world.txt
    # This command adds a new server configuration to the JFrog CLI   
-#    - run: |
-#        export SERVER_ID="test"
-#        jf c add $SERVER_ID --url=$URL --access-token=$ACCESS_TOKEN --interactive=false
+   - run: |
+       export SERVER_ID="test"
+       jf c add $SERVER_ID --url=$URL --access-token=$ACCESS_TOKEN --interactive=false
        
 #    - name: Setup JFrog CLI
 #      uses: jfrog/setup-jfrog-cli@v3.3.0
@@ -51,7 +51,7 @@ jobs:
 
        export PATH_TO_DIRECTORY="name/version/dates"
       
-       jf rt upload "test.txt" $PATH_TO_DIRECTORY 
+       jf rt upload "test.txt" $PATH_TO_DIRECTORY --url https://jfrogtest19.jfrog.io
 
 
 #    # This action publishes the build information to Artifactory and deletes older builds
