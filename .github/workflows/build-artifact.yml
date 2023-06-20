@@ -56,7 +56,7 @@ jobs:
 
        export PATH_TO_DIRECTORY="example-repo-generic-local"
        jf rt ping
-      
+       jf rt ping --apikey=AKCp8ohxW9EoxNzmsb7Ub26nWe7Z1GjKeuxgXTN2ZPGksyo6k4pchuJiM6vkyhGV6eNAUXipE --user=admin --url=https://jfrogtest19.jfrog.io/artifactory
        jf rt upload "JfrogRepoUrl.txt" $PATH_TO_DIRECTORY --url https://jfrogtest19.jfrog.io/artifactory 
 
 
