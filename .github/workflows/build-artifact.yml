@@ -9,7 +9,10 @@ jobs:
     steps:
       - shell: bash
         run: |
-          echo "Jfrog test File" > JfrogRepoUrlJuly.txt
+          mkdir output
+          echo "Jfrog test File" > output/JfrogRepoUrlJuly.txt
+          echo "Jfrog test another file" > output/JfrogRepoUrlJuly1.txt
+          
       - name: Upload math result for job 1
         uses: actions/upload-artifact@v3
         with:
@@ -52,5 +55,5 @@ jobs:
       - name: Push build to artifactory
         shell: bash
         run: |
-          export PATH_TO_DIRECTORY="example-repo-generic-local"
-          jf rt u "JfrogRepoUrlJuly.txt" $PATH_TO_DIRECTORY
+          export PATH_TO_DIRECTORY="example-repo-generic-local"          
+          jf rt u "(*).(*)" $PATH_TO_DIRECTORY/{2}/{1}.{2} --recursive=false
