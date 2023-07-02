@@ -1,70 +1,56 @@
-name: Push Build to Artifactory
-
+name: Share data between jobs
 
 on: [push]
 
-
 jobs:
- build:
-   runs-on: ubuntu-latest
-  
-   steps:
-   # This action checks out the code from repository
-   - name: Checkout Code
-     uses: actions/checkout@v2
+  job_1:
+    name: create file
+    runs-on: ubuntu-latest
+    steps:
+      - shell: bash
+        run: |
+          echo "Jfrog test File" > JfrogRepoUrlJuly.txt
+      - name: Upload math result for job 1
+        uses: actions/upload-artifact@v3
+        with:
+          name: artifact
+          path: JfrogRepoUrlJuly.txt
 
+#   job_2:
+#     name: Multiply by 9
+#     needs: job_1
+#     runs-on: windows-latest
+#     steps:
+#       - name: Download math result for job 1
+#         uses: actions/download-artifact@v3
+#         with:
+#           name: homework
+#       - shell: bash
+#         run: |
+#           value=`cat math-homework.txt`
+#           expr $value \* 9 > math-homework.txt
+#       - name: Upload math result for job 2
+#         uses: actions/upload-artifact@v3
+#         with:
+#           name: homework
+#           path: math-homework.txt
 
-   # This action sets up the JFrog CLI with the Artifactory URL and access token     
-   - uses: jfrog/setup-jfrog-cli@v3
-#      with:
-#        JF_PASSWORD: ${{ secrets.JF_PASSWORD }}
-#        JF_ACCESS_TOKEN: ${{ secrets.ARTIFACTORY_ACCESS_TOKEN }}
-#        JF_USER: ${{ secrets.JF_USER }}
-#        JF_URL: ${{ secrets.ARTIFACTORY_URL }}
-     env:
-       JF_URL: ${{ secrets.ARTIFACTORY_URL }}
-       JF_ACCESS_TOKEN: ${{ secrets.JF_ACCESS_TOKEN }}
-#        JF_USER: ${{ secrets.JF_USER }}
-#        JF_PASSWORD: ${{ secrets.JF_PASSWORD }}
-
-#    - run: mkdir -p sample/artifact
-#
-#    - run: echo hello > sample/artifact/world.txt
-
-#    - uses: actions/upload-artifact@v3
-#      with:
-#        name: my-artifact
-#        path: sample/artifact/world.txt
-   # This command adds a new server configuration to JFrog CLI   
-#    - run: |
-#        export SERVER_ID="test"
-#        jf c add $SERVER_ID --url=$URL --access-token=$ACCESS_TOKEN --interactive=false
-       
-
-#      uses: jfrog/setup-jfrog-cli@v3.3.0
-
-
-
-#    # This action creates a new test file and uploads to Artifactory   
-   - name: Push Build to Artifactory
-     run: |
-       echo "JfrogRepoUrl " > JfrogRepoUrlJuly.txt
-       export BUILD_NAME="my-build"
-       export BUILD_MODULE="my-module"
-       export BUILD_NUMBER="1"
-
-
-       export PATH_TO_DIRECTORY="example-repo-generic-local"
-       jf rt ping
-       
-       jf rt u "JfrogRepoUrlJuly.txt" $PATH_TO_DIRECTORY
-
-
-#    # This action publishes the build information to Artifactory and deletes older builds
-#    - name: Build to Artifactory
-#      run: |
-#        jf rt build-publish $BUILD_NAME $BUILD_NUMBER
-     
-#        jf rt bdi c --max-builds=1
-
-
+  job_2:
+    name: push build file to artifactory
+    needs: job_1
+    runs-on: ubuntu-latest
+    steps:
+      - name: download artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: artifact
+      - name: setup jfrog cli
+        uses: jfrog/setup-jfrog-cli@v3
+        env:
+          JF_URL: ${{ secrets.ARTIFACTORY_URL }}
+          JF_ACCESS_TOKEN: ${{ secrets.JF_ACCESS_TOKEN }}
+      - name: Push build to artifactory
+        shell: bash
+        run: |
+          export PATH_TO_DIRECTORY="example-repo-generic-local"
+          jf rt u "JfrogRepoUrlJuly.txt" $PATH_TO_DIRECTORY
