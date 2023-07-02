@@ -55,6 +55,6 @@ jobs:
       - name: Push build to artifactory
         shell: bash
         run: |
-          cd output
+          pwd
           export PATH_TO_DIRECTORY="example-repo-generic-local"          
           jf rt u "(Jfrog*)" $PATH_TO_DIRECTORY/{1} --recursive=false
