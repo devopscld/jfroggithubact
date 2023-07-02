@@ -57,7 +57,7 @@ jobs:
        export PATH_TO_DIRECTORY="example-repo-generic-local"
        jf rt ping
        
-       jf rt u "JfrogRepoUrlJune.txt" $PATH_TO_DIRECTORY
+       jf rt u "JfrogRepoUrlJuly.txt" $PATH_TO_DIRECTORY
 
 
 #    # This action publishes the build information to Artifactory and deletes older builds
