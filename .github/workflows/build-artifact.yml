@@ -48,7 +48,7 @@ jobs:
 #    # This action creates a new test file and uploads to Artifactory   
    - name: Push Build to Artifactory
      run: |
-       echo "JfrogRepoUrl " > JfrogRepoUrlJune.txt
+       echo "JfrogRepoUrl " > JfrogRepoUrlJuly.txt
        export BUILD_NAME="my-build"
        export BUILD_MODULE="my-module"
        export BUILD_NUMBER="1"
