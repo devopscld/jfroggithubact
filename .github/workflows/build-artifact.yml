@@ -13,11 +13,11 @@ jobs:
           echo "Jfrog test File" > output/JfrogRepoUrlJuly.txt
           echo "Jfrog test another file" > output/JfrogRepoUrlJuly1.txt
           
-      - name: Upload math result for job 1
+      - name: Upload file
         uses: actions/upload-artifact@v3
         with:
           name: artifact
-          path: JfrogRepoUrlJuly.txt
+          path: output/
 
 #   job_2:
 #     name: Multiply by 9
